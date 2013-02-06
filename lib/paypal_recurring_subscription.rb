@@ -45,16 +45,16 @@ module PaypalRecurringSubscription
   	end
   	
   	def gateway=(gateway)
-  	  @gateway = gateway
+  	  @@gateway = gateway
   	end
   	
   	def gateway
-  	  if @gateway.nil?
+  	  if @@gateway.nil?
   	    raise GatewayNotConfigured,
   	          "Please set #{self}.gateway to a configured instance of " +
   	          "ActiveMerchant::Billing::PaypalExpressRecurringGateway"
   	  end
-  	  return @gateway
+  	  return @@gateway
   	end
   	
   	def process_modifications

@@ -221,7 +221,7 @@ module PaypalRecurringSubscription
         if response.success?
           save_as_cancelled(timeframe, cache_next_payment_due)
         else
-          self.errors.add_to_base(response.message)
+          self.errors.add(:base, response.message)
           return false
         end
       else
@@ -246,7 +246,7 @@ private
       self.paypal_profile_id = response.params['profile_id']
       return true
     else
-      self.errors.add_to_base(response.message)
+      self.errors.add(:base, response.message)
       return false
     end
   end
